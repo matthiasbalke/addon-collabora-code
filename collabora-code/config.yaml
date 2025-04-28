@@ -1,0 +1,41 @@
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
+---
+name: "Collabora Online Development Edition (CODE)"
+slug: "collabora-code"
+description: "Collabora Online Development Edition - an awesome, Online Office suite image suitable for home use."
+url: "https://github.com/matthiasbalke/addon-collabora-code"
+version: "dev"
+
+image: "ghcr.io/matthiasbalke/addon-collabora-code"
+
+init: false
+startup: services
+
+arch:
+  - aarch64
+  - amd64
+
+full_access: true
+
+webui: https://[HOST]:[PORT:9980]/browser/dist/admin/admin.html
+
+ports:
+  9980/tcp: 9980
+
+ports_description:
+  9980/tcp: "coolwsd server port"
+
+map:
+  - addon_config:rw
+
+options:
+  dont_gen_ssl_cert: false
+  username: ""
+  password: ""
+
+schema:
+  username: str
+  password: password
+  server_name: "str?"
+  dont_gen_ssl_cert: bool
+  extra_params: "str?"
