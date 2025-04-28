@@ -69,4 +69,6 @@ bashio::log.info "done."
 
 # Start coolwsd
 bashio::log.info "Starting coolwsd..."
+# explicitly allow spaces to separate arguments
+# shellcheck disable=SC2086
 exec /usr/bin/coolwsd --version --use-env-vars "${cert_params:-}" --o:sys_template_path=/opt/cool/systemplate --o:child_root_path=/opt/cool/child-roots --o:file_server_root_path=/usr/share/coolwsd --o:cache_files.path=/opt/cool/cache --o:stop_on_config_change=true ${extra_params:-} "$@"
