@@ -4,7 +4,12 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-FROM debian:stable-slim
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:7.8.2
+# hadolint ignore=DL3006
+FROM ${BUILD_FROM}
+
+# Set shell
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # some descriptive metadata - docker image inspect
 ARG author
@@ -37,15 +42,16 @@ ARG nobrand
 ENV LC_CTYPE C.UTF-8
 
 # Mount secret URL part (for type 'cool') securely
-RUN --mount=type=secret,id=secret_key \
+# RUN --mount=type=secret,id=secret_key \
 # Update repos before installing packages
-    apt-get update && \
+# hadolint ignore=DL3008
+RUN apt-get update && \
 # Install dependencies of installer of Collabora Online
     apt-get -y install cpio tzdata libcap2-bin apt-transport-https gnupg2 ca-certificates curl && \
 # Setup Collabora repo
     repourl="https://collaboraoffice.com/${repo:-repos}/CollaboraOnline/"; \
-    secret_key=$(cat /run/secrets/secret_key); \
-    if [ "$type" = "cool" ] && [ -n ${secret_key+set} ]; then \
+    secret_key=""; \
+    if [ "$type" = "cool" ] && [ -n "${secret_key+set}" ]; then \
         echo "Based on the provided build arguments Collabora Online from customer repo will be used."; \
         repourl="${repourl}24.04/customer-deb-${secret_key}/"; \
     elif [ "$type" = "key" ]; then \
