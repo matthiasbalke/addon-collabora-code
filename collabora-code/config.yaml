@@ -29,7 +29,7 @@ map:
   - addon_config:rw
 
 options:
-  dont_gen_ssl_cert: false
+  dont_gen_ssl_cert: true
   username: ""
   password: ""
   extra_params: "--o:logging.level=information --o:logging.color=false --o:ssl.enable=false --o:ssl.termination=true"
