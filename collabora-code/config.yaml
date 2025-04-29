@@ -32,7 +32,7 @@ options:
   dont_gen_ssl_cert: false
   username: ""
   password: ""
-  extra_params: "--o:logging.level=information --o:logging.color=false"
+  extra_params: "--o:logging.level=information --o:logging.color=false --o:ssl.enable=false --o:ssl.termination=true"
 
 schema:
   username: str
