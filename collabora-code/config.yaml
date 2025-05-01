@@ -32,7 +32,8 @@ options:
   username: ""
   password: ""
   generate_ssl_certificate: false
-  coolwsd_arguments: "--o:logging.level=information --o:logging.color=false --o:ssl.enable=false --o:ssl.termination=true"
+  coolwsd_arguments: >-
+    --o:logging.level=information --o:logging.color=false --o:ssl.enable=false --o:ssl.termination=true
 
 schema:
   username: str
