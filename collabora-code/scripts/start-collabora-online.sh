@@ -3,6 +3,28 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+
+if bashio::config.exists 'dont_gen_ssl_cert' || bashio::config.exists 'extra_params'; then
+    bashio::log.info "Updating Configuration ..."
+
+    # migrate "dont_gen_ssl_cert" to "generate_ssl_certificate"
+    if bashio::config.exists 'dont_gen_ssl_cert'; then
+        # shellcheck disable=SC2046
+        bashio::addon.option 'generate_ssl_certificate' !$(bashio::config 'dont_gen_ssl_cert')
+        bashio::addon.option 'dont_gen_ssl_cert'
+    fi
+
+    # migrate "extra_params" to "coolwsd_arguments"
+    if bashio::config.exists 'extra_params'; then
+        # shellcheck disable=SC2046
+        bashio::addon.option 'coolwsd_arguments' $(bashio::config 'extra_params')
+        bashio::addon.option 'extra_params'
+    fi
+
+    bashio::log.info "done."
+    bashio::log.info ""
+fi
+
 bashio::log.info "Starting Collabora CODE Edition ..."
 
 # get HA addon config
