@@ -23,13 +23,13 @@ if bashio::config.has_value 'server_name'; then
 else
     SERVER_NAME=""
 fi
-if bashio::config.true 'dont_gen_ssl_cert'; then
-    DONT_GEN_SSL_CERT=true
-else
+if bashio::config.true 'generate_ssl_certificate'; then
     unset DONT_GEN_SSL_CERT
+else
+    DONT_GEN_SSL_CERT=true
 fi
-if bashio::config.has_value 'extra_params'; then
-    extra_params=$(bashio::config 'extra_params')
+if bashio::config.has_value 'coolwsd_arguments'; then
+    extra_params=$(bashio::config 'coolwsd_arguments')
 else
     extra_params=""
 fi
