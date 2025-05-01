@@ -30,14 +30,15 @@ map:
   - addon_config:rw
 
 options:
-  dont_gen_ssl_cert: true
   username: ""
   password: ""
-  extra_params: "--o:logging.level=information --o:logging.color=false --o:ssl.enable=false --o:ssl.termination=true"
+  generate_ssl_certificate: false
+  coolwsd_arguments: >-
+    --o:logging.level=information --o:logging.color=false --o:ssl.enable=false --o:ssl.termination=true
 
 schema:
   username: str
   password: password
   server_name: "str?"
-  dont_gen_ssl_cert: bool
-  extra_params: "str?"
+  generate_ssl_certificate: bool
+  coolwsd_arguments: "str?"

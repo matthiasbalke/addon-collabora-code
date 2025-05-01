@@ -1,0 +1,22 @@
+---
+configuration:
+  username:
+    name: Username
+    description: >-
+      Administrator username for the coolwsd backend.
+  password:
+    name: Password
+    description: >-
+      Administrator password for the coolwsd backend.
+  server_name:
+    name: Server DNS Name
+    description: >-
+      DNS name used to access the coolwsd backend.
+  generate_ssl_certificate:
+    name: Generate SSL Certificates
+    description: >-
+      Whether to generate self-signed SSL certificates on each startup.
+  coolwsd_arguments:
+    name: coolwsd arguments
+    description: >-
+      Command line arguments passed to coolwsd.
