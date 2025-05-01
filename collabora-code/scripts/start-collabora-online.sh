@@ -7,12 +7,12 @@
 if bashio::config.exists 'dont_gen_ssl_cert' || bashio::config.exists 'extra_params'; then
     bashio::log.info "Updating Configuration ..."
 
-    # migrate "dont_gen_ssl_cert" to "generate_ssl_certificate"
+    # remove "dont_gen_ssl_cert"
     if bashio::config.exists 'dont_gen_ssl_cert'; then
         bashio::addon.option 'dont_gen_ssl_cert'
     fi
 
-    # migrate "extra_params" to "coolwsd_arguments"
+    # remove "extra_params"
     if bashio::config.exists 'extra_params'; then
         bashio::addon.option 'extra_params'
     fi
