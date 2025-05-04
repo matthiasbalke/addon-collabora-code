@@ -72,7 +72,7 @@ RUN apt-get update && \
 # Update repos again
     apt-get update && \
 # Install Collabora Online (Collabora Office is a dependency)
-    apt-get -y install coolwsd coolwsd-deprecated \
+    apt-get -y install sudo coolwsd coolwsd-deprecated \
 # Install all dictionaries
                        collaboraoffice-dict-* \
 # Install all language packs
@@ -143,9 +143,6 @@ COPY /scripts/start-collabora-online.sh /
 
 # coolwsd listens on port 9980
 EXPOSE 9980
-
-# Switch to cool user (use numeric user id to be compatible with Kubernetes Pod Security Policies)
-USER 1001
 
 # FIXME
 # Use the old starter script until we find out how to replace it.
