@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-
+# migrate 0.1.0 configuration to 0.2.0
 if bashio::config.exists 'dont_gen_ssl_cert' || bashio::config.exists 'extra_params'; then
     bashio::log.info "Updating Configuration ..."
 
@@ -19,6 +19,13 @@ if bashio::config.exists 'dont_gen_ssl_cert' || bashio::config.exists 'extra_par
 
     bashio::log.info "done."
     bashio::log.info ""
+fi
+
+# expose coolwsd.xml in addon config directory
+if ! bashio::fs.file_exists "/config/coolwsd.xml"; then
+    cp -a /etc/coolwsd/coolwsd.xml /config/coolwsd.xml \
+        || bashio::exit.nok \
+            'Failed creating "/config/coolwsd.xml"'
 fi
 
 bashio::log.info "Starting Collabora CODE Edition ..."
@@ -78,15 +85,17 @@ cert_params="\
  --o:ssl.cert_file_path=/tmp/ssl/certs/servers/localhost/cert.pem \
  --o:ssl.key_file_path=/tmp/ssl/certs/servers/localhost/privkey.pem \
  --o:ssl.ca_file_path=/tmp/ssl/certs/ca/root.crt.pem"
+
+chown cool:cool -R /tmp/ssl/certs
 fi
 
 # store HA configured username and password (salted)
 bashio::log.info "Storing coolwsd username \"${USERNAME}\" and password..."
-coolconfig set-admin-password --user "${USERNAME}" --password "${PASSWORD}"
+sudo -H -u cool bash -c "coolconfig --config-file /config/coolwsd.xml set-admin-password --user '${USERNAME}' --password '${PASSWORD}'"
 bashio::log.info "done."
 
 # Start coolwsd
 bashio::log.info "Starting coolwsd..."
 # explicitly allow spaces to separate arguments
 # shellcheck disable=SC2086
-exec /usr/bin/coolwsd --version --use-env-vars "${cert_params:-}" --o:sys_template_path=/opt/cool/systemplate --o:child_root_path=/opt/cool/child-roots --o:file_server_root_path=/usr/share/coolwsd --o:cache_files.path=/opt/cool/cache --o:stop_on_config_change=true ${extra_params:-} "$@"
+sudo -H -u cool bash -c "exec /usr/bin/coolwsd --version --use-env-vars --config-file /config/coolwsd.xml ${cert_params:-} --o:sys_template_path=/opt/cool/systemplate --o:child_root_path=/opt/cool/child-roots --o:file_server_root_path=/usr/share/coolwsd --o:cache_files.path=/opt/cool/cache --o:stop_on_config_change=true ${extra_params:-}"
