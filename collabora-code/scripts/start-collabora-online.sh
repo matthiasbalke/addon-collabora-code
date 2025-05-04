@@ -85,6 +85,8 @@ cert_params="\
  --o:ssl.cert_file_path=/tmp/ssl/certs/servers/localhost/cert.pem \
  --o:ssl.key_file_path=/tmp/ssl/certs/servers/localhost/privkey.pem \
  --o:ssl.ca_file_path=/tmp/ssl/certs/ca/root.crt.pem"
+
+chown cool:cool -R /tmp/ssl/certs
 fi
 
 # store HA configured username and password (salted)
@@ -96,4 +98,4 @@ bashio::log.info "done."
 bashio::log.info "Starting coolwsd..."
 # explicitly allow spaces to separate arguments
 # shellcheck disable=SC2086
-sudo -H -u cool bash -c "exec /usr/bin/coolwsd --version --use-env-vars --config-file /config/coolwsd.xml '${cert_params:-}' --o:sys_template_path=/opt/cool/systemplate --o:child_root_path=/opt/cool/child-roots --o:file_server_root_path=/usr/share/coolwsd --o:cache_files.path=/opt/cool/cache --o:stop_on_config_change=true ${extra_params:-} '$@'"
+sudo -H -u cool bash -c "exec /usr/bin/coolwsd --version --use-env-vars --config-file /config/coolwsd.xml ${cert_params:-} --o:sys_template_path=/opt/cool/systemplate --o:child_root_path=/opt/cool/child-roots --o:file_server_root_path=/usr/share/coolwsd --o:cache_files.path=/opt/cool/cache --o:stop_on_config_change=true ${extra_params:-}"
