@@ -47,7 +47,7 @@ ENV LC_CTYPE C.UTF-8
 # hadolint ignore=DL3008
 RUN apt-get update && \
 # Install dependencies of installer of Collabora Online
-    apt-get -y install cpio tzdata libcap2-bin apt-transport-https gnupg2 ca-certificates curl && \
+    apt-get -y --no-install-recommends install sudo cpio tzdata libcap2-bin apt-transport-https gnupg2 ca-certificates curl && \
 # Setup Collabora repo
     repourl="https://collaboraoffice.com/${repo:-repos}/CollaboraOnline/"; \
     secret_key=""; \
@@ -72,7 +72,7 @@ RUN apt-get update && \
 # Update repos again
     apt-get update && \
 # Install Collabora Online (Collabora Office is a dependency)
-    apt-get -y install sudo coolwsd coolwsd-deprecated \
+    apt-get -y --no-install-recommends install coolwsd coolwsd-deprecated \
 # Install all dictionaries
                        collaboraoffice-dict-* \
 # Install all language packs
@@ -119,9 +119,9 @@ RUN apt-get update && \
 # Install brand package (or not)
     if [ -z "$nobrand" ]; then \
         if [ "$type" = "cool" ] || [ "$type" = "key" ]; then \
-            apt-get -y install collabora-online-brand; \
+            apt-get -y --no-install-recommends install collabora-online-brand; \
         else \
-            apt-get -y install code-brand; \
+            apt-get -y --no-install-recommends install code-brand; \
         fi; \
     fi && \
 # Change cool uid/gid to 1001/1001
