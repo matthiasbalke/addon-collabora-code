@@ -16,8 +16,6 @@ arch:
   - aarch64
   - amd64
 
-full_access: true
-
 webui: https://[HOST]:[PORT:9980]/browser/dist/admin/admin.html
 
 ports:
