@@ -119,9 +119,9 @@ RUN apt-get update && \
 # Install brand package (or not)
     if [ -z "$nobrand" ]; then \
         if [ "$type" = "cool" ] || [ "$type" = "key" ]; then \
-            apt-get -y install collabora-online-brand; \
+            apt-get -y --no-install-recommends install collabora-online-brand; \
         else \
-            apt-get -y install code-brand; \
+            apt-get -y --no-install-recommends install code-brand; \
         fi; \
     fi && \
 # Change cool uid/gid to 1001/1001
