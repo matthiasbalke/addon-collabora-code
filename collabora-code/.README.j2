@@ -1,7 +1,7 @@
 # Home Assistant Add-on: Collabora Online Development Edition (CODE)
 
 ![Project Stage][project-stage-shield]
-![License][license-shield](LICENSE.md)
+[![License][license-shield]](LICENSE.md)
 
 ![Supports aarch64 Architecture][aarch64-shield]
 ![Supports amd64 Architecture][amd64-shield]
@@ -10,7 +10,7 @@
 ![Supports i386 Architecture][i386-shield]
 
 ![Project Maintenance][maintenance-shield]
-![GitHub Activity][commits-shield][commits]
+[![GitHub Activity][commits-shield]][commits]
 
 This add-on allows you to run Collabora Online Development Edition (CODE) on your Home Assistant instance.
 
