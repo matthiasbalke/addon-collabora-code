@@ -28,6 +28,14 @@ if ! bashio::fs.file_exists "/config/coolwsd.xml"; then
             'Failed creating "/config/coolwsd.xml"'
 fi
 
+# generate WOPI proof key
+if ! bashio::fs.file_exists "/etc/coolwsd/proof_key"; then
+    bashio::log.info "Generating WOPI proof key (/etc/coolwsd/proof_key) ..."
+    sudo -H -u cool bash -c "coolconfig --config-file /config/coolwsd.xml generate-proof-key" \
+        || bashio::exit.nok \
+            'Failed creating WOPI proof key "/etc/coolwsd/proof_key"'
+fi
+
 bashio::log.info "Starting Collabora CODE Edition ..."
 
 # get HA addon config
