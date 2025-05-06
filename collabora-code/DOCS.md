@@ -66,7 +66,7 @@ comparison to installing any other Home Assistant add-on.
 
 #### Option `username`
 
-This option allows you to change to username to use when loggin in to the web admin.
+This option allows you to change the username to use when loggin in to the web admin.
 
 ```txt
 https://<server-name.com>/browser/dist/admin/admin.html
@@ -74,7 +74,7 @@ https://<server-name.com>/browser/dist/admin/admin.html
 
 #### Option `password`
 
-This option allows you to change to password to use when logging in to the web admin.
+This option allows you to change the password to use when logging in to the web admin.
 
 ```txt
 https://<server-name.com>/browser/dist/admin/admin.html
@@ -82,7 +82,8 @@ https://<server-name.com>/browser/dist/admin/admin.html
 
 #### Option `generate_ssl_certificate`
 
-This option allows you to generate self-signed certificates. This options is recommended for testing purposes only.
+This option allows you to generate self-signed certificates on add-on startup.
+**This options is recommended for testing purposes only.**
 
 #### Option `server_name`
 
@@ -93,17 +94,17 @@ This option allows you to change the DNS name the server is running on.
 #### Option `coolwsd_arguments`
 
 This option allows you to set command line arguments, passed to the `coolwsd` binary. This can be used
-to configure basic setups easily withou modifying the `coolwsd.xml` in the `addons_config` directory.
+to configure basic setups easily without modifying the `coolwsd.xml` in the `addons_config` directory.
 
-See the [official docs][collabora-official-docs] for detailed explanation of possible arguments.
+See the [official docs][collabora-official-docs] for detailed explanations of possible arguments.
 
 ### Using configuration file `coolwsd.xml`
 
 The add-on can also be configured by modifing the configuration file (`coolwsd.xml`) located in the `addon_config` directory.
 
-See the [official docs][collabora-official-docs] for detailed explanation of possible configuration options.
+See the [official docs][collabora-official-docs] for detailed explanations of possible configuration options.
 
-**Note**: _The options specified in the add-on settings overwrite the configurations in the XML file!_
+**Note**: _The options specified in the add-on settings overwrite the configuration in the XML file!_
 
 ## Support
 
