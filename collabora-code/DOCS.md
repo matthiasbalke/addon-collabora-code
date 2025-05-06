@@ -1,6 +1,6 @@
 # Home Assistant Add-on: Collabora Online Development Edition (CODE)
 
-This add-on allows you to run Collabora Online Development Edition (CODE) on your Home Assistant instance.
+This add-on allows you to run [Collabora Online Development Edition (CODE)][official-site] on your Home Assistant instance.
 
 ## Features
 
@@ -140,6 +140,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+[official-site]: https://www.collaboraonline.com/de/code/
 [my-ha-badge]: https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg
 [my-ha-url]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fmatthiasbalke%2Fha-addons
 [addon-badge]: https://my.home-assistant.io/badges/supervisor_addon.svg
