@@ -8,7 +8,7 @@ Configure basic settings within the add-on settings:
 
 - set admin username and passwort
 - configure a custom DNS hostname
-- set coolwsd commandline arguments
+- set `coolwsd` commandline arguments
 - generate self-signed certificates for testing purposes
 
 or fully customize the `coolwsd.xml` within the `addon_config` directory.
