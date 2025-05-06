@@ -1,5 +1,6 @@
 # Home Assistant Add-on: Collabora Online Development Edition (CODE)
 
+[![GitHub Release][releases-shield]][releases]
 ![Project Stage][project-stage-shield]
 [![License][license-shield]](LICENSE.md)
 
@@ -9,6 +10,7 @@
 ![Supports armv7 Architecture][armv7-shield]
 ![Supports i386 Architecture][i386-shield]
 
+[![Github Actions][github-actions-shield]][github-actions]
 ![Project Maintenance][maintenance-shield]
 [![GitHub Activity][commits-shield]][commits]
 
@@ -71,8 +73,10 @@ SOFTWARE.
 
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-early%09testing-yellow.svg
 [license-shield]: https://img.shields.io/github/license/matthiasbalke/addon-collabora-code
-[release-shield]: https://img.shields.io/badge/version-main-blue.svg
-[release]: matthiasbalke/addon-collabora-code/tree/main
+[releases-shield]: https://img.shields.io/github/v/release/matthiasbalke/addon-collabora-code?include_prereleases
+[releases]: https://github.com/matthiasbalke/addon-collabora-code/releases
+[github-actions-shield]: https://github.com/matthiasbalke/addon-collabora-code/workflows/CI/badge.svg
+[github-actions]: https://github.com/matthiasbalke/addon-collabora-code/actions
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
 [armhf-shield]: https://img.shields.io/badge/armhf-no-red.svg
