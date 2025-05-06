@@ -16,26 +16,22 @@
 
 This add-on allows you to run Collabora Online Development Edition (CODE) on your Home Assistant instance.
 
+## About
+
+This add-on allows you to run Collabora Online Development Edition (CODE) on your Home Assistant instance.
+
+[:books: Read the full add-on documentation][docs]
+
 ## Features
 
-## WARNING! THIS IS AN EDGE VERSION!
+Configure basic settings within the add-on configuration page:
 
-This Home Assistant Add-ons repository contains edge builds of add-ons.
-Edge builds add-ons are based upon the latest development version.
+- set admin username and passwort
+- configure a custom DNS hostname
+- set coolwsd commandline arguments
+- generate self-signed certificates for testing purposes
 
-- They may not work at all.
-- They might stop working at any time.
-- They could have a negative impact on your system.
-
-This repository was created for:
-
-- Anybody willing to test.
-- Anybody interested in trying out upcoming add-ons or add-on features.
-- Developers.
-
-If you are more interested in stable releases of our add-ons:
-
-<https://github.com/matthiasbalke/ha-addons>
+or fully customize the `coolwsd.xml` within the `addon_config` directory.
 
 ## Support
 
@@ -85,6 +81,7 @@ SOFTWARE.
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
 [commits-shield]: https://img.shields.io/github/commit-activity/y/matthiasbalke/addon-collabora-code.svg
 [commits]: https://github.com/matthiasbalke/addon-collabora-code/commits/main
+[docs]: https://github.com/matthiasbalke/addon-collabora-code/blob/main/collabora-code/DOCS.md
 [ha-addons]: https://github.com/matthiasbalke/ha-addons
 [my-ha-badge]: https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg
 [my-ha-url]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fmatthiasbalke%2Fha-addons
