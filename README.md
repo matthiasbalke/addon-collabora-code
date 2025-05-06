@@ -13,6 +13,7 @@
 [![Github Actions][github-actions-shield]][github-actions]
 ![Project Maintenance][maintenance-shield]
 [![GitHub Activity][commits-shield]][commits]
+![Reported Installations][installations-shield-stable]
 
 ## About
 
@@ -84,3 +85,4 @@ SOFTWARE.
 [issue]: https://github.com/matthiasbalke/addon-collabora-code/issues
 [matthiasbalke]: https://github.com/matthiasbalke
 [contributors]: https://github.com/matthiasbalke/addon-collabora-code/graphs/contributors
+[installations-shield-stable]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fanalytics.home-assistant.io%2Faddons.json&query=%24%5B%22d8ac6820_collabora-code%22%5D.total&label=Reported%20Installations&link=https%3A%2F%2Fanalytics.home-assistant.io/add-ons
