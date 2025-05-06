@@ -16,7 +16,7 @@
 
 ## About
 
-This add-on allows you to run Collabora Online Development Edition (CODE) on your Home Assistant instance.
+This add-on allows you to run [Collabora Online Development Edition (CODE)][official-site] on your Home Assistant instance.
 
 [:books: Read the full add-on documentation][docs]
 
@@ -43,7 +43,7 @@ The original setup of this repository is by [Matthias Balke][matthiasbalke].
 
 For a full list of all authors and contributors, check [the contributor's page][contributors].
 
-# MIT License
+## MIT License
 
 Copyright (c) 2025 Matthias Balke
 
@@ -79,10 +79,8 @@ SOFTWARE.
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
 [commits-shield]: https://img.shields.io/github/commit-activity/y/matthiasbalke/addon-collabora-code.svg
 [commits]: https://github.com/matthiasbalke/addon-collabora-code/commits/main
+[official-site]: https://www.collaboraonline.com/de/code/
 [docs]: https://github.com/matthiasbalke/addon-collabora-code/blob/main/collabora-code/DOCS.md
-[ha-addons]: https://github.com/matthiasbalke/ha-addons
-[my-ha-badge]: https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg
-[my-ha-url]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fmatthiasbalke%2Fha-addons
 [issue]: https://github.com/matthiasbalke/addon-collabora-code/issues
 [matthiasbalke]: https://github.com/matthiasbalke
 [contributors]: https://github.com/matthiasbalke/addon-collabora-code/graphs/contributors
