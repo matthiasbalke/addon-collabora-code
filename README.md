@@ -14,8 +14,6 @@
 ![Project Maintenance][maintenance-shield]
 [![GitHub Activity][commits-shield]][commits]
 
-This add-on allows you to run Collabora Online Development Edition (CODE) on your Home Assistant instance.
-
 ## About
 
 This add-on allows you to run Collabora Online Development Edition (CODE) on your Home Assistant instance.
