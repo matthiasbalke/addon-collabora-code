@@ -18,7 +18,9 @@ or fully customize the `coolwsd.xml` within the `addon_config` directory.
 ### automatic setup
 
 1. Click on the Home Assistant `My button` below:
+
    [![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.][my-ha-badge]][my-ha-url]
+
 1. Click `Add`.
 1. Click on the three dots menu in the top right.
 1. Click on `Check for updates`.
@@ -29,7 +31,7 @@ or fully customize the `coolwsd.xml` within the `addon_config` directory.
 1. In the Home Assistant add-on store, a possibility to add a repository is provided.
 1. Use the following URL to add this repository:
 
-```
+```txt
 https://github.com/matthiasbalke/ha-addons
 ```
 
@@ -52,23 +54,31 @@ comparison to installing any other Home Assistant add-on.
 
 1. Click the "Install" button to install the add-on.
 1. Configure the `username` and `password` options.
-1. Start the "Collabora Online Development Edition (CODE)" add-on.
-1. Check the logs of the "Collabora Online Development Edition (CODE)" add-on to see
+1. Start the `Collabora Online Development Edition (CODE)` add-on.
+1. Check the logs of the `Collabora Online Development Edition (CODE)` add-on to see
    if everything went well.
 
 ## Configuration
 
 **Note**: _Remember to restart the add-on when the configuration is changed._
 
-### Configuration using the add-on settings
+### Using the add-on settings
 
 #### Option `username`
 
-This option allows you to change to username to use when you log in to the web admin.
+This option allows you to change to username to use when loggin in to the web admin.
+
+```txt
+https://<server-name.com>/browser/dist/admin/admin.html
+```
 
 #### Option `password`
 
-This option allows you to change to password to use when you log in to the web admin.
+This option allows you to change to password to use when logging in to the web admin.
+
+```txt
+https://<server-name.com>/browser/dist/admin/admin.html
+```
 
 #### Option `generate_ssl_certificate`
 
@@ -87,7 +97,7 @@ to configure basic setups easily withou modifying the `coolwsd.xml` in the `addo
 
 See the [official docs][collabora-official-docs] for detailed explanation of possible arguments.
 
-### Configuration using configuration file `coolwsd.xml`
+### Using configuration file `coolwsd.xml`
 
 The add-on can also be configured by modifing the configuration file (`coolwsd.xml`) located in the `addon_config` directory.
 
