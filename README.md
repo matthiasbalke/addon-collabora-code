@@ -22,7 +22,7 @@ This add-on allows you to run [Collabora Online Development Edition (CODE)][offi
 
 ## Features
 
-Configure basic settings within the add-on configuration page:
+Configure basic settings within the add-on settings:
 
 - set admin username and passwort
 - configure a custom DNS hostname
