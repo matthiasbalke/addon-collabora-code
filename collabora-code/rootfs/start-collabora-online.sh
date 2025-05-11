@@ -28,6 +28,10 @@ if ! bashio::fs.file_exists "/config/coolwsd.xml"; then
             'Failed creating "/config/coolwsd.xml"'
 fi
 
+# ensure config is readable by process user
+# this is needed, as after editing coolwsd.xml using smb, the owner is set to root
+chown -R cool:cool /config
+
 # generate WOPI proof key
 if ! bashio::fs.file_exists "/etc/coolwsd/proof_key"; then
     bashio::log.info "Generating WOPI proof key (/etc/coolwsd/proof_key) ..."
