@@ -21,6 +21,10 @@ if bashio::config.exists 'dont_gen_ssl_cert' || bashio::config.exists 'extra_par
     bashio::log.info ""
 fi
 
+# ensure config directory is readable by process user
+# this is needed, as after editing coolwsd.xml using smb, the owner is set to root
+chown -R cool:cool /config
+
 # expose coolwsd.xml in addon config directory
 if ! bashio::fs.file_exists "/config/coolwsd.xml"; then
     cp -a /etc/coolwsd/coolwsd.xml /config/coolwsd.xml \
@@ -28,16 +32,17 @@ if ! bashio::fs.file_exists "/config/coolwsd.xml"; then
             'Failed creating "/config/coolwsd.xml"'
 fi
 
-# ensure config is readable by process user
-# this is needed, as after editing coolwsd.xml using smb, the owner is set to root
-chown -R cool:cool /config
-
 # generate WOPI proof key
-if ! bashio::fs.file_exists "/etc/coolwsd/proof_key"; then
-    bashio::log.info "Generating WOPI proof key (/etc/coolwsd/proof_key) ..."
-    sudo -H -u cool bash -c "coolconfig --config-file /config/coolwsd.xml generate-proof-key" \
+if ! bashio::fs.file_exists "/config/proof_key"; then
+    bashio::log.info "Generating WOPI proof key (/config/proof_key) ..."
+    sudo -H -u cool bash -c 'ssh-keygen -t rsa -N "" -m PEM -f /config/proof_key' \
         || bashio::exit.nok \
-            'Failed creating WOPI proof key "/etc/coolwsd/proof_key"'
+            'Failed creating WOPI proof key "/config/proof_key"'
+    # until changing the configuration dir is fixed
+    # symlink proof_key into default config directory
+    sudo -H -u cool bash -c 'ln -s /config/proof_key /etc/coolwsd/proof_key' \
+        || bashio::exit.nok \
+            'Failed creating symlink for proof key "/etc/coolwsd/proof_key -> /config/proof_key"'
 fi
 
 bashio::log.info "Starting Collabora CODE Edition ..."
@@ -81,7 +86,9 @@ bashio::log.info "Generating new self-signed certificates..."
 mkdir -p /tmp/ssl/
 cd /tmp/ssl/ || exit
 mkdir -p certs/ca
+bashio::log.info "Generating new CA..."
 openssl genrsa -out certs/ca/root.key.pem 2048
+
 openssl req -x509 -new -nodes -key certs/ca/root.key.pem -days 9131 -out certs/ca/root.crt.pem -subj "/C=DE/ST=BW/L=Stuttgart/O=Dummy Authority/CN=Dummy Authority"
 mkdir -p certs/servers
 mkdir -p certs/tmp
@@ -110,4 +117,4 @@ bashio::log.info "done."
 bashio::log.info "Starting coolwsd..."
 # explicitly allow spaces to separate arguments
 # shellcheck disable=SC2086
-sudo -H -u cool bash -c "exec /usr/bin/coolwsd --version --use-env-vars --config-file /config/coolwsd.xml ${cert_params:-} --o:sys_template_path=/opt/cool/systemplate --o:child_root_path=/opt/cool/child-roots --o:file_server_root_path=/usr/share/coolwsd --o:cache_files.path=/opt/cool/cache --o:stop_on_config_change=true ${extra_params:-}"
+sudo -H -u cool bash -c "exec /usr/bin/coolwsd --version --use-env-vars --config-dir /config --config-file /config/coolwsd.xml ${cert_params:-} --o:sys_template_path=/opt/cool/systemplate --o:child_root_path=/opt/cool/child-roots --o:file_server_root_path=/usr/share/coolwsd --o:cache_files.path=/opt/cool/cache --o:stop_on_config_change=true ${extra_params:-}"

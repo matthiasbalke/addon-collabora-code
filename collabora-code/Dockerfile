@@ -47,7 +47,7 @@ ENV LC_CTYPE C.UTF-8
 # hadolint ignore=DL3008
 RUN apt-get update && \
 # Install dependencies of installer of Collabora Online
-    apt-get -y --no-install-recommends install sudo cpio tzdata libcap2-bin apt-transport-https gnupg2 ca-certificates curl && \
+    apt-get -y --no-install-recommends install sudo openssh-client cpio tzdata libcap2-bin apt-transport-https gnupg2 ca-certificates curl && \
 # Setup Collabora repo
     repourl="https://collaboraoffice.com/${repo:-repos}/CollaboraOnline/"; \
     secret_key=""; \
