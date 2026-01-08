@@ -16,9 +16,9 @@ ARG author
 LABEL author=${author:-"Collabora Productivity Ltd."}
 LABEL description="Collabora Online is a powerful collaborative Office suite that supports all major document, spreadsheet and presentation file formats, which you can integrate into your own infrastructure. Collabora Online provides data security and sovereignty, and is ideally suited to the demands of a modern distributed working environment. Delivering a familiar look and feel, Collabora Online represents a real alternative to other big-brands solutions, giving you control and flexibility."
 ARG releasenotes
-LABEL release.notes=${releasenotes:-"https://www.collaboraonline.com/code-24-04-release-notes/"}
+LABEL release.notes=${releasenotes:-"https://www.collaboraonline.com/code-25-04-release-notes/"}
 ARG version
-LABEL version=${version:-"24.04.1.3"}
+LABEL version=${version:-"25.04.1.1"}
 ARG coretag
 LABEL commit.history.core="https://git.libreoffice.org/core/+log/${coretag}"
 ARG onlinetag
@@ -47,19 +47,19 @@ ENV LC_CTYPE C.UTF-8
 # hadolint ignore=DL3008
 RUN apt-get update && \
 # Install dependencies of installer of Collabora Online
-    apt-get -y --no-install-recommends install sudo openssh-client cpio tzdata libcap2-bin apt-transport-https gnupg2 ca-certificates curl && \
+    apt-get -y --no-install-recommends install sudo openssh-client cpio tzdata libcap2-bin apt-transport-https gnupg2 ca-certificates curl libnss-wrapper && \
 # Setup Collabora repo
     repourl="https://collaboraoffice.com/${repo:-repos}/CollaboraOnline/"; \
     secret_key=""; \
     if [ "$type" = "cool" ] && [ -n "${secret_key+set}" ]; then \
         echo "Based on the provided build arguments Collabora Online from customer repo will be used."; \
-        repourl="${repourl}24.04/customer-deb-${secret_key}/"; \
+        repourl="${repourl}25.04/customer-deb-${secret_key}/"; \
     elif [ "$type" = "key" ]; then \
         echo "Based on the provided build arguments license key enabled Collabora Online will be used."; \
-        repourl="${repourl}24.04-key/"; \
+        repourl="${repourl}25.04-key/"; \
     else \
         echo "Based on the provided build arguments Collabora Online Development Edition will be used."; \
-        repourl="${repourl}24.04-CODE/CODE-deb/"; \
+        repourl="${repourl}25.04-CODE/CODE-deb/"; \
     fi && \
     echo "deb [signed-by=/usr/share/keyrings/collaboraonline-release-keyring.gpg] ${repourl} /" > /etc/apt/sources.list.d/collabora.list && \
 # Download Collabora package signing key
